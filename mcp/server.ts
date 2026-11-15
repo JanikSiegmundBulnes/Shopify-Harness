@@ -24,8 +24,12 @@ server.registerTool(
   async ({ suite }) => {
     const filter = suite === "acceptance" ? "src/acceptance" : undefined
     const report = runTests(projectDir, filter)
-    // for 'unit': drop acceptance results from the report
-    if (suite === "unit") report.failures = report.failures.filter(f => !f.file.startsWith("src/acceptance"))
+    // for 'unit': drop acceptance results and recount
+    if (suite === "unit") {
+      report.failures = report.failures.filter(f => !f.file.startsWith("src/acceptance"))
+      report.failed = report.failures.length
+      report.ok = report.failures.length === 0 && !report.error
+    }
     return { content: [{ type: "text", text: JSON.stringify({ suite, ...report }, null, 2) }] }
   },
 )
