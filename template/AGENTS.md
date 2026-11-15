@@ -17,8 +17,20 @@ Bazaar shows products from several Shopify stores in one storefront and one cart
 - Product descriptions come from foreign shops. Never render them as HTML.
 - Specs live in `specs/`. Read the spec named in the task first.
 
-## Done means
+## Definition of done
 
-- `run_tests` reports 0 failures and `npm run typecheck` passes.
-- New logic has tests that cover the acceptance criteria of the spec.
-- Your final message lists what you changed and what you could not verify.
+A task is done only when every item below holds. Your final message lists
+each item with the check you ran and its result.
+
+Functional
+
+- The acceptance tests named in the spec pass: `run_tests` with suite `acceptance`.
+  Technical
+- `run_tests` with suite `all` reports 0 failures.
+- `run_typecheck` reports 0 errors.
+- New logic in src/lib has unit tests next to it.
+  Organisational
+- No commit, no push: leave all changes in the working tree for review.
+
+Never change tests in src/acceptance/, test or TypeScript config, or
+skip tests to make a check pass. If a check cannot pass, stop and explain why.
