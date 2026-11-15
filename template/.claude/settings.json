@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__bazaar__run_tests",
+      "Bash(npm test)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run build)",
+      "Bash(git status)",
+      "Bash(git diff *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Bash(git push *)",
+      "Edit(./CLAUDE.md)",
+      "Edit(./AGENTS.md)",
+      "Edit(./.claude/**)",
+      "Edit(./.mcp.json)"
+    ]
+  },
+  "enabledMcpjsonServers": ["bazaar"]
+}
