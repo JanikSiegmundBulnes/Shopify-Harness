@@ -5,7 +5,7 @@ Bazaar shows products from several Shopify stores in one storefront and one cart
 ## Commands
 
 - Tests: use the tool `run_tests` (preferred) or `npm test`
-- Type check: `npm run typecheck`
+- Type check: use the tool `run_typecheck` (preferred) or `npm run typecheck`
 - Build: `npm run build`
 - Do not start the dev server (`npm run dev`); it never exits.
 
@@ -22,15 +22,16 @@ Bazaar shows products from several Shopify stores in one storefront and one cart
 A task is done only when every item below holds. Your final message lists
 each item with the check you ran and its result.
 
-Functional
-
+### Functional
 - The acceptance tests named in the spec pass: `run_tests` with suite `acceptance`.
-  Technical
+
+### Technical
 - `run_tests` with suite `all` reports 0 failures.
 - `run_typecheck` reports 0 errors.
-- New logic in src/lib has unit tests next to it.
-  Organisational
+- New logic in `src/lib/` has unit tests next to it.
+
+### Organisational
 - No commit, no push: leave all changes in the working tree for review.
 
-Never change tests in src/acceptance/, test or TypeScript config, or
+Never change tests in `src/acceptance/`, test or TypeScript config, or
 skip tests to make a check pass. If a check cannot pass, stop and explain why.

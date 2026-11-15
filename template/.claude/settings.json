@@ -2,6 +2,8 @@
   "permissions": {
     "allow": [
       "mcp__bazaar__run_tests",
+      "mcp__bazaar__run_typecheck",
+      "Edit(src/**)",
       "Bash(npm test)",
       "Bash(npm run typecheck)",
       "Bash(npm run build)",
@@ -9,14 +11,34 @@
       "Bash(git diff *)"
     ],
     "deny": [
+      "Edit(src/acceptance/**)",
+      "Edit(./vite.config.ts)",
+      "Edit(./tsconfig*.json)",
+      "Edit(./package.json)",
       "Read(./.env)",
       "Read(./.env.*)",
       "Bash(git push *)",
+      "Bash(git commit *)",
       "Edit(./CLAUDE.md)",
       "Edit(./AGENTS.md)",
       "Edit(./.claude/**)",
       "Edit(./.mcp.json)"
     ]
   },
+  "hooks": {
+  "PreToolUse": [
+    {
+      "matcher": "Edit|Write|Bash",
+      "hooks": [
+        { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect-checks.mjs\"" }
+      ]
+    }
+  ]
+},
+"sandbox": {
+  "enabled": true,
+  "failIfUnavailable": true,
+  "allowUnsandboxedCommands": false
+},
   "enabledMcpjsonServers": ["bazaar"]
 }
